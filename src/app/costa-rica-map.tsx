@@ -103,7 +103,7 @@ export function CostaRicaMap({
           <g
             key={s.id}
             transform={`translate(${x} ${y})`}
-            className="cursor-pointer group"
+            className="cursor-pointer group outline-none"
             onClick={() => onSelect(s.id)}
             role="button"
             tabIndex={0}
@@ -129,7 +129,7 @@ export function CostaRicaMap({
                 "transition-all duration-300",
                 active
                   ? "fill-[#3aa0ff] drop-shadow-[0_0_10px_rgba(58,160,255,0.9)]"
-                  : "fill-[#3aa0ff]/75 group-hover:fill-[#3aa0ff]"
+                  : "fill-[#3aa0ff]/75 group-hover:fill-[#3aa0ff] group-focus-visible:fill-[#3aa0ff]"
               )}
               stroke="#0a1830"
               strokeWidth={1.5}
@@ -138,7 +138,9 @@ export function CostaRicaMap({
               r={active ? 17 : 13}
               className={cn(
                 "fill-none stroke-[#3aa0ff]/50 transition-all duration-300",
-                active ? "opacity-100" : "opacity-0 group-hover:opacity-70"
+                active
+                  ? "opacity-100"
+                  : "opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70"
               )}
               strokeWidth={1}
             />
@@ -150,7 +152,7 @@ export function CostaRicaMap({
                 "font-sans transition-all duration-300 select-none",
                 active
                   ? "fill-white text-[15px] font-medium opacity-100"
-                  : "fill-white/80 text-[12px] opacity-0 group-hover:opacity-100"
+                  : "fill-white/80 text-[12px] opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
               )}
               style={{ paintOrder: "stroke", stroke: "#16260f", strokeWidth: 3 }}
             >
