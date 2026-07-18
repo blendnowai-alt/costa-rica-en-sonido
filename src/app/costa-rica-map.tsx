@@ -82,11 +82,38 @@ export function CostaRicaMap({
           >
             <circle r={40} fill="transparent" style={{ pointerEvents: "all" }} />
             {active && isPlaying && (
-              <circle
-                r={18}
-                className="fill-[#3aa0ff]/40 animate-ping"
-                style={{ transformOrigin: "center", transformBox: "fill-box" }}
-              />
+              <>
+                <circle r={12} fill="none" stroke="#3aa0ff" strokeWidth={2}>
+                  <animate
+                    attributeName="r"
+                    values="10;30"
+                    dur="1.8s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.55;0"
+                    dur="1.8s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle r={12} fill="none" stroke="#3aa0ff" strokeWidth={2}>
+                  <animate
+                    attributeName="r"
+                    values="10;30"
+                    dur="1.8s"
+                    begin="0.9s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.55;0"
+                    dur="1.8s"
+                    begin="0.9s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </>
             )}
             <circle
               r={active ? 15 : 11}
