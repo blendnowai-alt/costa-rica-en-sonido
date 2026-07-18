@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AudioPlayer } from "./audio-player";
 import { CostaRicaMap } from "./costa-rica-map";
 import { SOUNDSCAPES } from "./data";
@@ -19,6 +19,35 @@ export function SoundMapExperience() {
       player.togglePlay();
     } else {
       setActiveId(id);
+    }
+  };
+
+  const mapTiltRef = useRef<HTMLDivElement>(null);
+  const mapGlowRef = useRef<HTMLDivElement>(null);
+
+  const handleMapMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width; // 0..1
+    const py = (e.clientY - rect.top) / rect.height;
+    const x = px - 0.5;
+    const y = py - 0.5;
+
+    if (mapTiltRef.current) {
+      mapTiltRef.current.style.transform = `perspective(1200px) rotateX(${y * -6}deg) rotateY(${x * 8}deg) translate3d(${x * -14}px, ${y * -10}px, 0) scale3d(1.015, 1.015, 1.015)`;
+    }
+    if (mapGlowRef.current) {
+      mapGlowRef.current.style.background = `radial-gradient(45% 45% at ${px * 100}% ${py * 100}%, rgba(122,157,74,0.45) 0%, rgba(216,190,130,0.18) 45%, rgba(5,7,10,0) 75%)`;
+    }
+  };
+
+  const handleMapMouseLeave = () => {
+    if (mapTiltRef.current) {
+      mapTiltRef.current.style.transform =
+        "perspective(1200px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale3d(1,1,1)";
+    }
+    if (mapGlowRef.current) {
+      mapGlowRef.current.style.background =
+        "radial-gradient(60% 60% at 50% 45%, rgba(122,157,74,0.4) 0%, rgba(216,190,130,0.18) 45%, rgba(5,7,10,0) 75%)";
     }
   };
 
@@ -67,16 +96,22 @@ export function SoundMapExperience() {
         <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:mt-20 lg:grid-cols-[1.4fr_1fr] lg:gap-8">
           <div
             className="animate-fade-in-up relative -mx-4 sm:mx-0"
-            style={{ animationDelay: "0.2s" }}
+            style={{ animationDelay: "0.2s", perspective: "1200px" }}
+            onMouseMove={handleMapMouseMove}
+            onMouseLeave={handleMapMouseLeave}
           >
             <div
-              className="pointer-events-none absolute -inset-6 rounded-[3rem] opacity-80 blur-3xl sm:-inset-16"
+              ref={mapGlowRef}
+              className="pointer-events-none absolute -inset-6 rounded-[3rem] opacity-80 blur-3xl transition-[background] duration-200 ease-out sm:-inset-16"
               style={{
                 background:
                   "radial-gradient(60% 60% at 50% 45%, rgba(122,157,74,0.4) 0%, rgba(216,190,130,0.18) 45%, rgba(5,7,10,0) 75%)",
               }}
             />
-            <div className="relative rounded-[1.5rem] border border-[#e8b34d]/10 bg-[#3f6b38]/[0.06] p-2 sm:rounded-[2rem] sm:p-8">
+            <div
+              ref={mapTiltRef}
+              className="relative rounded-[1.5rem] border border-[#e8b34d]/10 bg-[#3f6b38]/[0.06] p-2 transition-transform duration-200 ease-out will-change-transform sm:rounded-[2rem] sm:p-8"
+            >
               <CostaRicaMap
                 soundscapes={SOUNDSCAPES}
                 activeId={activeId}
