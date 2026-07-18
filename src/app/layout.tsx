@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 const jost = Jost({ subsets: ["latin"], variable: "--font-jost" });
 
 export const metadata: Metadata = {
-  title: "Costa Rica, en sonido — Rombos Sound Studio",
+  title: "Así suena Costa Rica — Rombos Sound Studio",
   description:
     "Cinco paisajes sonoros creados por Rombos Sound Studio para el Film Commission de PROCOMER, presentados en el Festival de Cannes 2026. Explorá el mapa interactivo y escuchá el país.",
   openGraph: {
-    title: "Costa Rica, en sonido — Rombos Sound Studio",
+    title: "Así suena Costa Rica — Rombos Sound Studio",
     description:
       "Un mapa interactivo con cinco paisajes sonoros originales de Costa Rica, creados para el Film Commission de PROCOMER.",
     images: ["/logo-blanco.png"],

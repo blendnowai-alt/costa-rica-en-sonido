@@ -44,8 +44,8 @@ export function SoundMapExperience() {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#e8b34d]/90">
             Presentado en el Festival de Cannes 2026
           </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-6xl">
-            Costa Rica, en sonido.
+          <h1 className="mt-4 whitespace-nowrap text-3xl font-semibold tracking-tight sm:text-6xl">
+            Así suena Costa Rica
           </h1>
           <p className="mt-4 text-balance text-base text-white/50 sm:text-lg">
             Cinco paisajes sonoros originales, uno por cada región del país.
