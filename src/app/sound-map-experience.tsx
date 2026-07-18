@@ -14,6 +14,14 @@ export function SoundMapExperience() {
 
   const player = useAudioPlayer(active?.audioSrc ?? null);
 
+  const handleSelect = (id: string) => {
+    if (id === activeId) {
+      player.togglePlay();
+    } else {
+      setActiveId(id);
+    }
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#05070a] text-white">
       <div
@@ -24,7 +32,7 @@ export function SoundMapExperience() {
         }}
       />
 
-      <header className="relative z-10 mx-auto flex max-w-6xl items-center gap-3 px-6 pt-8 sm:px-8">
+      <header className="animate-fade-in-up relative z-10 mx-auto flex max-w-6xl items-center gap-3 px-6 pt-8 sm:px-8">
         <Image
           src="/logo-blanco.png"
           alt="Rombos Sound Studio"
@@ -40,7 +48,10 @@ export function SoundMapExperience() {
       </header>
 
       <main className="relative z-10 mx-auto max-w-6xl px-6 pb-40 pt-10 sm:px-8 sm:pt-16">
-        <div className="mx-auto max-w-2xl text-center">
+        <div
+          className="animate-fade-in-up mx-auto max-w-2xl text-center"
+          style={{ animationDelay: "0.1s" }}
+        >
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#e8b34d]/90">
             Presentado en el Festival de Cannes 2026
           </p>
@@ -54,7 +65,10 @@ export function SoundMapExperience() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:mt-20 lg:grid-cols-[1.4fr_1fr] lg:gap-8">
-          <div className="relative -mx-4 sm:mx-0">
+          <div
+            className="animate-fade-in-up relative -mx-4 sm:mx-0"
+            style={{ animationDelay: "0.2s" }}
+          >
             <div
               className="pointer-events-none absolute -inset-6 rounded-[3rem] opacity-80 blur-3xl sm:-inset-16"
               style={{
@@ -67,12 +81,15 @@ export function SoundMapExperience() {
                 soundscapes={SOUNDSCAPES}
                 activeId={activeId}
                 isPlaying={player.isPlaying}
-                onSelect={setActiveId}
+                onSelect={handleSelect}
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div
+            className="animate-fade-in-up flex flex-col gap-4"
+            style={{ animationDelay: "0.3s" }}
+          >
             <div>
               <h2 className="text-sm font-medium text-white/70">
                 Explorar regiones
@@ -85,7 +102,7 @@ export function SoundMapExperience() {
               soundscapes={SOUNDSCAPES}
               activeId={activeId}
               isPlaying={player.isPlaying}
-              onSelect={setActiveId}
+              onSelect={handleSelect}
             />
           </div>
         </div>
