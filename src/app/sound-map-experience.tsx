@@ -20,7 +20,7 @@ export function SoundMapExperience() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 50% at 50% 0%, rgba(122,157,74,0.16) 0%, rgba(5,7,10,0) 70%), radial-gradient(50% 40% at 85% 20%, rgba(216,190,130,0.10) 0%, rgba(5,7,10,0) 70%)",
+            "radial-gradient(90% 75% at 50% 0%, rgba(122,157,74,0.20) 0%, rgba(5,7,10,0) 72%), radial-gradient(70% 55% at 85% 15%, rgba(216,190,130,0.12) 0%, rgba(5,7,10,0) 70%), radial-gradient(65% 50% at 50% 46%, rgba(122,157,74,0.16) 0%, rgba(5,7,10,0) 75%)",
         }}
       />
 
@@ -54,13 +54,22 @@ export function SoundMapExperience() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:mt-20 lg:grid-cols-[1.4fr_1fr] lg:gap-8">
-          <div className="-mx-4 rounded-[1.5rem] border border-[#e8b34d]/10 bg-[#3f6b38]/[0.06] p-2 sm:mx-0 sm:rounded-[2rem] sm:p-8">
-            <CostaRicaMap
-              soundscapes={SOUNDSCAPES}
-              activeId={activeId}
-              isPlaying={player.isPlaying}
-              onSelect={setActiveId}
+          <div className="relative -mx-4 sm:mx-0">
+            <div
+              className="pointer-events-none absolute -inset-6 rounded-[3rem] opacity-80 blur-3xl sm:-inset-16"
+              style={{
+                background:
+                  "radial-gradient(60% 60% at 50% 45%, rgba(122,157,74,0.4) 0%, rgba(216,190,130,0.18) 45%, rgba(5,7,10,0) 75%)",
+              }}
             />
+            <div className="relative rounded-[1.5rem] border border-[#e8b34d]/10 bg-[#3f6b38]/[0.06] p-2 sm:rounded-[2rem] sm:p-8">
+              <CostaRicaMap
+                soundscapes={SOUNDSCAPES}
+                activeId={activeId}
+                isPlaying={player.isPlaying}
+                onSelect={setActiveId}
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
