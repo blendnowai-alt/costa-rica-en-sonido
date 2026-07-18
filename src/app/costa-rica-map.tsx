@@ -85,7 +85,7 @@ export function CostaRicaMap({
               <circle
                 r={18}
                 className="fill-[#3aa0ff]/40 animate-ping"
-                style={{ transformOrigin: "center" }}
+                style={{ transformOrigin: "center", transformBox: "fill-box" }}
               />
             )}
             <circle
