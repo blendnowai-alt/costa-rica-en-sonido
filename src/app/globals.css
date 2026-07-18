@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: Futura, "Futura PT", var(--font-jost), "Century Gothic", sans-serif;
+}
+
+html {
+  @apply font-sans;
+}
+
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
