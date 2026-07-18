@@ -54,7 +54,7 @@ export function SoundMapExperience() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:mt-20 lg:grid-cols-[1.4fr_1fr] lg:gap-8">
-          <div className="rounded-[2rem] border border-[#e8b34d]/10 bg-[#3f6b38]/[0.06] p-4 sm:p-8">
+          <div className="-mx-4 rounded-[1.5rem] border border-[#e8b34d]/10 bg-[#3f6b38]/[0.06] p-2 sm:mx-0 sm:rounded-[2rem] sm:p-8">
             <CostaRicaMap
               soundscapes={SOUNDSCAPES}
               activeId={activeId}
